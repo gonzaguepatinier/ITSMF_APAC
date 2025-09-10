@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a197bca6010787139935fce4a8c3be86 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed;
+                top: 20px; right: 20px; width: 450px; height: auto;
+                background-color: white; border: 2px solid #333; z-index:9999;
+                font-size: 13px; padding: 15px; border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+
+        <h4 style="margin-top: 0; color: #333; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+            ITSMF APAC Chapters
+        </h4>
+        
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: orange; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>India:</strong> Bangalore -
+                <a href="https://itsmfindiachapter.com/" target="_blank">https://itsmfindiachapter.com/</a>
+            </div>
+            
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: green; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>Malaysia:</strong> Kuala Lumpur -
+                <a href="https://itsmf.org.my/" target="_blank">https://itsmf.org.my/</a>
+            </div>
+            
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: red; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>Thailand:</strong> Bangkok -
+                <a href="https://www.linkedin.com/company/itsmf-thailand-chapter/" target="_blank">https://www.linkedin.com/company/itsmf-thailand-chapter/</a>
+            </div>
+            
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: purple; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>Hong Kong:</strong> Hong Kong -
+                <a href="http://www.itsmf.org.hk/eng/" target="_blank">http://www.itsmf.org.hk/eng/</a>
+            </div>
+            
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: blue; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>Australia:</strong> Melbourne -
+                <a href="https://itsmfaus.site-ym.com/" target="_blank">https://itsmfaus.site-ym.com/</a>
+            </div>
+            
+            <div style="margin: 5px 0;">
+                <span style="display: inline-block; width: 16px; height: 16px;
+                             background-color: darkgreen; margin-right: 8px; border-radius: 50%; vertical-align: middle;"></span>
+                <strong>New Zealand:</strong> Auckland -
+                <a href="http://itsmf.org.nz/" target="_blank">http://itsmf.org.nz/</a>
+            </div>
+            
+
+        <hr style="border-top: 1px solid #ccc; margin: 15px 0;">
+
+        <h4 style="margin-top: 0; color: #333; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+            Upcoming Events 🗓️
+        </h4>
+
+        <div style="max-height: 300px; overflow-y: auto; margin-top: 10px;">
+            
+            <div style="margin: 8px 0; padding: 5px; border-left: 3px solid blue; background-color: #f9f9f9; border-radius: 0 3px 3px 0;">
+                <div style="font-weight: bold; color: blue;">Australia</div>
+                <div style="font-size: 12px; margin: 2px 0;">
+                    <strong>Thursday, 11 September 2025</strong><br>
+                    National Monthly Event - 11th Sept 2025 - SIAM Bodies of Knowledge<br>
+                    <a href="https://itsmfaus.site-ym.com/events/EventDetails.aspx?id=1982781" target="_blank" style="color: #0066cc; font-size: 11px;">More info</a>
+                </div>
+            </div>
+            
+            <div style="margin: 8px 0; padding: 5px; border-left: 3px solid blue; background-color: #f9f9f9; border-radius: 0 3px 3px 0;">
+                <div style="font-weight: bold; color: blue;">Australia</div>
+                <div style="font-size: 12px; margin: 2px 0;">
+                    <strong>Thursday, 25 September 2025</strong><br>
+                    ACT F2F Event - 25th Sept 2025 - AI-Driven ITSM: Live Demo. Real-Use Cases. Real Outcomes.<br>
+                    <a href="https://itsmfaus.site-ym.com/events/EventDetails.aspx?id=1983729" target="_blank" style="color: #0066cc; font-size: 11px;">More info</a>
+                </div>
+            </div>
+            
+            <div style="margin: 8px 0; padding: 5px; border-left: 3px solid red; background-color: #f9f9f9; border-radius: 0 3px 3px 0;">
+                <div style="font-weight: bold; color: red;">Thailand</div>
+                <div style="font-size: 12px; margin: 2px 0;">
+                    <strong>09 October 2025</strong><br>
+                    Webinar: ITSMF Thailand / ITSM and Business Continuity<br>
+                    <a href="https://www.linkedin.com/events/7368878092259426305" target="_blank" style="color: #0066cc; font-size: 11px;">More info</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div style="position: fixed;
+                top: 200px; left: 20px; width: 350px; height: 200px;
+                background-color: white; border: 2px solid #333; z-index:9999;
+                font-size: 12px; padding: 15px; border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+    <h4 style="margin-top: 0; color: #333; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+        About ITSMF APAC
+    </h4>
+    <p style="margin: 8px 0; line-height: 1.4;">
+        <strong>IT Service Management Forum (ITSMF)</strong> is a global organization
+        promoting best practices in IT Service Management across the Asia-Pacific region.
+    </p>
+    <p style="margin: 8px 0; line-height: 1.4;">
+        These chapters provide local networking, training, and certification opportunities
+        for ITSM professionals.
+    </p>
+    <div style="font-size: 11px; color: #666; text-align: center; margin-top: 15px;">
+        <em>Click on markers for chapter details and website links</em>
+    </div>
+    </div>
+    
+    
+    <h2 style="position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
+               z-index: 1000; background: rgba(255,255,255,0.9);
+               padding: 15px 30px; border-radius: 10px; margin: 0;
+               box-shadow: 0 2px 10px rgba(0,0,0,0.3); color: #333;
+               font-family: Arial, sans-serif;">
+        ITSMF Asia-Pacific Chapter Locations
+    </h2>
+    
+    
+            <div class="folium-map" id="map_a197bca6010787139935fce4a8c3be86" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a197bca6010787139935fce4a8c3be86 = L.map(
+                "map_a197bca6010787139935fce4a8c3be86",
+                {
+                    center: [15.0, 120.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ba56a1a872e90bbc543c4eb20ec6d06d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ba56a1a872e90bbc543c4eb20ec6d06d.addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var marker_fdc83326b680c044b7298aca866ec26c = L.marker(
+                [12.9716, 77.5946],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_4bbc20beef1be885ba2d4d0dad55445b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ba40660708bff07dea0f9201971975e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3161cd385e8d7244a1c756a3b871b3a9 = $(`<div id="html_3161cd385e8d7244a1c756a3b871b3a9" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF India</h4>             <p><strong>Location:</strong> Bangalore, India</p>             <p><strong>Details:</strong> Silicon Valley of India</p>             <p><strong>Website:</strong> <a href="https://itsmfindiachapter.com/" target="_blank">https://itsmfindiachapter.com/</a></p>         </div>         </div>`)[0];
+                popup_5ba40660708bff07dea0f9201971975e.setContent(html_3161cd385e8d7244a1c756a3b871b3a9);
+            
+        
+
+        marker_fdc83326b680c044b7298aca866ec26c.bindPopup(popup_5ba40660708bff07dea0f9201971975e)
+        ;
+
+        
+    
+    
+            marker_fdc83326b680c044b7298aca866ec26c.bindTooltip(
+                `<div>
+                     ITSMF India - Bangalore
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fdc83326b680c044b7298aca866ec26c.setIcon(icon_4bbc20beef1be885ba2d4d0dad55445b);
+            
+    
+            var marker_05cfaa5414e5f6b8c7b55a63c65c2245 = L.marker(
+                [3.139, 101.6869],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_516e303d3bd2a3966aa92704421f6824 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_263ca126f4cc053fbb657183071de275 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9eb34b7e53364377bc2fca1d9df3db8e = $(`<div id="html_9eb34b7e53364377bc2fca1d9df3db8e" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF Malaysia</h4>             <p><strong>Location:</strong> Kuala Lumpur, Malaysia</p>             <p><strong>Details:</strong> National chapter headquarters</p>             <p><strong>Website:</strong> <a href="https://itsmf.org.my/" target="_blank">https://itsmf.org.my/</a></p>         </div>         </div>`)[0];
+                popup_263ca126f4cc053fbb657183071de275.setContent(html_9eb34b7e53364377bc2fca1d9df3db8e);
+            
+        
+
+        marker_05cfaa5414e5f6b8c7b55a63c65c2245.bindPopup(popup_263ca126f4cc053fbb657183071de275)
+        ;
+
+        
+    
+    
+            marker_05cfaa5414e5f6b8c7b55a63c65c2245.bindTooltip(
+                `<div>
+                     ITSMF Malaysia - Kuala Lumpur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_05cfaa5414e5f6b8c7b55a63c65c2245.setIcon(icon_516e303d3bd2a3966aa92704421f6824);
+            
+    
+            var marker_04ce79a544b47c2bdc747959ee402c16 = L.marker(
+                [13.7563, 100.5018],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_fb26250a77892ac22e10c33e455c351f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_88f45d2e08c3b3d2d6dc1901396a0650 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_419613b1c93d79e47ce0b1ee8dba0aa0 = $(`<div id="html_419613b1c93d79e47ce0b1ee8dba0aa0" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF Thailand</h4>             <p><strong>Location:</strong> Bangkok, Thailand</p>             <p><strong>Details:</strong> Central hub for SE Asia ITSM activities</p>             <p><strong>Website:</strong> <a href="https://www.linkedin.com/company/itsmf-thailand-chapter/" target="_blank">https://www.linkedin.com/company/itsmf-thailand-chapter/</a></p>         </div>         </div>`)[0];
+                popup_88f45d2e08c3b3d2d6dc1901396a0650.setContent(html_419613b1c93d79e47ce0b1ee8dba0aa0);
+            
+        
+
+        marker_04ce79a544b47c2bdc747959ee402c16.bindPopup(popup_88f45d2e08c3b3d2d6dc1901396a0650)
+        ;
+
+        
+    
+    
+            marker_04ce79a544b47c2bdc747959ee402c16.bindTooltip(
+                `<div>
+                     ITSMF Thailand - Bangkok
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_04ce79a544b47c2bdc747959ee402c16.setIcon(icon_fb26250a77892ac22e10c33e455c351f);
+            
+    
+            var marker_24ccfa3abe09cb324eed68856682440d = L.marker(
+                [22.3193, 114.1694],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_70b278628b3956b1516a82168eafff05 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05437fa97cf98662224777ea01298cc3 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d49e0d508078f294775462fa4a57eff4 = $(`<div id="html_d49e0d508078f294775462fa4a57eff4" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF Hong Kong</h4>             <p><strong>Location:</strong> Hong Kong, Hong Kong</p>             <p><strong>Details:</strong> Financial services ITSM focus</p>             <p><strong>Website:</strong> <a href="http://www.itsmf.org.hk/eng/" target="_blank">http://www.itsmf.org.hk/eng/</a></p>         </div>         </div>`)[0];
+                popup_05437fa97cf98662224777ea01298cc3.setContent(html_d49e0d508078f294775462fa4a57eff4);
+            
+        
+
+        marker_24ccfa3abe09cb324eed68856682440d.bindPopup(popup_05437fa97cf98662224777ea01298cc3)
+        ;
+
+        
+    
+    
+            marker_24ccfa3abe09cb324eed68856682440d.bindTooltip(
+                `<div>
+                     ITSMF Hong Kong - Hong Kong
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24ccfa3abe09cb324eed68856682440d.setIcon(icon_70b278628b3956b1516a82168eafff05);
+            
+    
+            var marker_82b089e0c8b3ace42b9b4608107b7d72 = L.marker(
+                [-37.8136, 144.9631],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_6f54b2202922bcb01851f6718a16361a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7e08133fb3527c6256223869c99cbbc = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c8617e79e8d8256759437478ec051b6b = $(`<div id="html_c8617e79e8d8256759437478ec051b6b" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF Australia</h4>             <p><strong>Location:</strong> Melbourne, Australia</p>             <p><strong>Details:</strong> Strong enterprise ITSM community</p>             <p><strong>Website:</strong> <a href="https://itsmfaus.site-ym.com/" target="_blank">https://itsmfaus.site-ym.com/</a></p>         </div>         </div>`)[0];
+                popup_f7e08133fb3527c6256223869c99cbbc.setContent(html_c8617e79e8d8256759437478ec051b6b);
+            
+        
+
+        marker_82b089e0c8b3ace42b9b4608107b7d72.bindPopup(popup_f7e08133fb3527c6256223869c99cbbc)
+        ;
+
+        
+    
+    
+            marker_82b089e0c8b3ace42b9b4608107b7d72.bindTooltip(
+                `<div>
+                     ITSMF Australia - Melbourne
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_82b089e0c8b3ace42b9b4608107b7d72.setIcon(icon_6f54b2202922bcb01851f6718a16361a);
+            
+    
+            var marker_2f8a5c39d00d890b5fc75af5a8c0fbc3 = L.marker(
+                [-36.8485, 174.7633],
+                {
+}
+            ).addTo(map_a197bca6010787139935fce4a8c3be86);
+        
+    
+            var icon_4d6bfe243e88fedb507849cbd8684c99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b35344f1045db593b9c84f7adf257cc5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1be9c17fb20c2a8b32a17f3aed2ca663 = $(`<div id="html_1be9c17fb20c2a8b32a17f3aed2ca663" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px;">             <h4>ITSMF New Zealand</h4>             <p><strong>Location:</strong> Auckland, New Zealand</p>             <p><strong>Details:</strong> National chapter covering both islands</p>             <p><strong>Website:</strong> <a href="http://itsmf.org.nz/" target="_blank">http://itsmf.org.nz/</a></p>         </div>         </div>`)[0];
+                popup_b35344f1045db593b9c84f7adf257cc5.setContent(html_1be9c17fb20c2a8b32a17f3aed2ca663);
+            
+        
+
+        marker_2f8a5c39d00d890b5fc75af5a8c0fbc3.bindPopup(popup_b35344f1045db593b9c84f7adf257cc5)
+        ;
+
+        
+    
+    
+            marker_2f8a5c39d00d890b5fc75af5a8c0fbc3.bindTooltip(
+                `<div>
+                     ITSMF New Zealand - Auckland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f8a5c39d00d890b5fc75af5a8c0fbc3.setIcon(icon_4d6bfe243e88fedb507849cbd8684c99);
+            
+</script>
+</html>
